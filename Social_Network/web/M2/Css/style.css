@@ -1,0 +1,353 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11-apr-2017, 13.17.58
+    Author     : Fede
+*/
+
+/* Task 3 */
+body 
+{ 
+    font-size:18px;
+    background-color: #e4e4e4;
+    font: "Open Sans",Arial, sans-serif;
+    color: black;
+}
+
+#page{
+    background-color: #e4e4e4;
+}
+
+#content{
+    background-color: #e4e4e4;
+}
+
+#header,#footer{
+    background-color: #000088;
+    color:white;
+} 
+
+#sidebar1{
+    background-color: #e4e4e4;
+}
+
+/*Proprietà titoli */
+h1{
+    font-family:"Arial Black",Gadget,sans-serif;
+    font-size: 37px;
+    color:white;
+}
+h2{
+    font-family:"Verdana",Geneva,sans-serif;
+    font-size: 25px;
+}
+
+h2,h3,h4
+{
+    color: black;
+    margin: 0;
+    padding-top: 15px;
+}
+
+p{
+    margin:0.1em; 
+}
+
+/*css per link*/
+a:link, a:visited {
+    text-decoration: underline;
+    color: #000088;
+    background-color: transparent;
+}
+
+a:hover, a:active {
+    font-weight: bold;
+}
+
+li {
+    list-style-type: square;
+    font-size: 1.1em;
+    text-align: left; 
+}
+
+/*Visualizzazione campi input */   
+/*Bottone*/
+input[type=submit], button{
+    color: #ffffff;
+    background-color: #000088;
+    height: 33px;
+    width: 353px;
+    font:bold 15px Arial,Helvetica,sans-serif;
+    border: 1px solid #000033;
+    margin-bottom: 10px;
+    margin-top: 12px;
+}
+input[type=submit]:hover, button:hover{
+    text-decoration: underline;
+}
+
+#formInfo > form >input[type=submit]
+{
+    width: 503px;
+    height: 35px;
+}
+
+
+#Title{
+    float:left;
+    margin-left: 30px;
+}
+
+.profilePic2 img{
+    float: left;
+}
+nav{
+    margin-left: 25%;
+}
+nav li{
+    float: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    }
+nav li.active{
+    text-decoration: underline;
+}
+nav ol,nav li{
+    list-style-type: none;
+    display: inline-block;
+    
+}
+#user{
+    margin-left: 850px;
+    width:200px;
+}
+
+.profilePic img{
+    float:left;
+    width:32px;
+    height:30px;
+    margin-right: 8px;
+    padding-top:10px;
+} 
+
+.profilePic2 img{
+    width:40px;
+    height:40px;
+  
+} 
+
+#header a,li{
+    color: white; 
+    text-decoration:none;
+    list-style-type:none;
+    font-family:"Verdana",Geneva,sans-serif;
+    padding-top: 15px;
+}
+
+.post h2{
+    font-size: 18px;
+    margin-left: 50px;
+    margin-bottom:20px;
+}
+
+.postimg img{
+    width: 495px;
+    height: 400px;
+}
+
+.post{
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: white;
+}
+#Post{
+    width:510px;
+    margin-left:10%;
+}
+
+#descrizione{
+    margin-left: 8%;
+}
+
+#titlelogin {
+    text-align: center; 
+}
+
+#formInfo{
+    width: 600px;
+    margin-left: 15%;
+}
+
+
+/*TASK 5*/
+/*css form*/        
+label{
+    float:left;
+    width: 150px;
+    text-align: left;
+    display: inline-block;
+}
+.input-form{
+    width:370px;
+    padding: 35px;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+} 
+input,textarea{
+    border:1px solid gray;
+    width:350px;
+    height: 25px;
+    margin-bottom: 10px;
+    font-family: Verdana,sans-serif;
+}
+
+input:focus, textarea:focus{
+    border:1px solid black;
+    color: #222;
+}
+
+#header{
+    position:fixed;
+    top:0;
+    right:0;
+    height: 100px;
+    width: 100%;
+}
+
+/*TASK 6*/
+
+/*layout per larghezze maggiori o uguali a 1024px*/        
+@media only screen and (min-width:1024px){
+    #page{
+        width:100%;
+    }
+
+
+    #content {
+        margin-top: 115px;
+        margin-bottom: 50px;
+        margin-left:18%;
+        min-height:400px; 
+    }
+    #sidebar1{  
+        width:220px;
+        height: 600px;
+        float:left;
+        margin-left: 2%;
+    }
+    #sidebar1 h2{
+        margin-left:20px;
+    }
+}
+
+
+/*layout per larghezze intermedie*/
+@media only screen and (min-width:480px)and (max-width:1024px){
+    .input-form{
+        margin-top: 20%;
+
+    } 
+    #user{
+        margin-left: 680px;
+        width:200px;
+    }
+    .profilePic img{
+        width:32px;
+        height:30px;
+    } 
+    #header a{
+        font-size: 16px;
+    }
+    #sidebar1{  
+        margin-top: 110px;
+        margin-left: 10%;
+        display: block;
+        margin-left: 1%;
+        width: auto;
+        text-align: center;
+        display: none;
+    }
+    #sidebar1 li{
+        text-align: center;
+    }
+    #sidebar1 h2{
+        display: none;
+    }
+
+    .post{
+        padding: 8px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        background-color: white;
+    }
+    #Post{
+        margin-top:110px;
+        margin-left: auto;
+        margin-right:auto;
+
+    }
+    #descrizione{
+        margin-top: 110px;
+        margin-left: auto;
+    }       
+    #formInfo{
+        margin-top: 110px;
+        width: auto;
+      
+    }   
+}
+
+
+/*layout per larghezze minori o uguali a 480px*/
+@media only screen and (max-width:480px){
+    .input-form{
+        margin-top: 35%;
+        min-width: 400px;
+
+    }
+    #user{
+        margin-left: 300px;
+        width:130px;
+    }
+    .profilePic img{
+        width:30px;
+        height:28px;
+    } 
+    #header a{
+        font-size: 13px;
+    }
+    h1{
+        font-size: 30px;
+    }
+
+    #sidebar1{
+        display: none;
+    }
+    #Post{
+        margin-top:110px;
+        margin-left: auto;
+        margin-right:auto;
+        min-width: 400px;
+    }
+    #descrizione{
+        margin-top: 110px;
+        margin-left: auto;
+        min-width: 400px;
+    }   
+    #formInfo{
+        margin-top: 110px;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 400px;
+    }  
+    nav li{
+    display: none;
+    }
+
+}
