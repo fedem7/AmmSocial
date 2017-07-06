@@ -10,49 +10,82 @@ and open the template in the  editor.
         <meta http-equiv = "content-type" content = "text/html; charset=utf-8" />
         <meta name="author" content="Federico Murru">
     </head>
+
     <body>
-        <!--Nome utente e Foto profilo-->
-        <p id="Name1">Genoveffo Rossi</p>
-        <img src="img/nerd-urkel.jpg" alt="Foto Profilo" width="180" height="170"/>
+        <div id="page">
 
-        <!--Barra di navigazione tra le pagine del sito-->
-        <h2>Navigazione</h2>
-        <ul>
-            <li><a href="descrizione.html">Descrizione</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-      
-        <!--lista dei post-->
-        <div id="Post">                 
+            <div id="header">
 
-            <!--Post di testo-->
-            <div>
-                <p>Ciao e buona giornata a tutti !!!</p>
-            </div>
-
-            <br/> 
-            <!--Post con una foto-->
-            <div>
-                <img alt="Scimmia" src="img/imagesPost.jpg">
-            </div>
-
-            <br/>  
-
-            <!--Post con link-->
-            <div>
-                <p> Vamos blaugrana !!! <a href="http://it.wikipedia.org/wiki/Futbol_Club_Barcelona" target="_blank">
-                        Forza Barcellona</a></p>
+                <h1 id="Title">Nerdbook</h1>
 
             </div>
+
+            <!--Barra di navigazione tra le pagine del sito-->
+            <!--sidebar 1-->
+            <div id="sidebar1">
+                <h2>Navigazione</h2>
+                <ul>
+                    <li><a href="descrizione.html">Descrizione</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+
+            <div id="content">
+                <!--lista dei post-->
+                <div id="Post">                 
+                    <div class="post">
+                        <h2>Matteo Anedda</h2>
+                        <div class="profilePic2">
+                            <!--Nome utente post1 e Foto profilo-->
+                            <img src="img/imges.jpg" alt="Foto Profilo" width="180" height="170"/> 
+                        </div>
+
+
+                        <!--Post di testo-->
+
+                        <p>Ciao e buona giornata a tutti !!!</p>
+                    </div>
+                    <br/>
+
+                    <div class="post">
+                        <h2>Marta Usai</h2> 
+                        <div class="profilePic2">
+                            <!--Nome utente post2 e Foto profilo-->
+                            <img src="img/gatto.jpg" alt="Foto Profilo" width="180" height="170"/> 
+                        </div>
+
+                        <!--Post con una foto-->
+                        <div class="postimg">
+                            <img alt="Scimmia" src="img/imagesPost.jpg" >
+                        </div>
+                    </div>
+                    <br/> 
+
+                    <div class="post">
+                        <h2>Marco Mura</h2> 
+                        <div class="profilePic2">
+                            <!--Nome utente post3 e Foto profilo-->
+                            <img src="img/messi.jpg" alt="Foto Profilo" width="180" height="170"/>
+                        </div>
+
+
+                        <!--Post con link-->
+
+                        <p> Vamos blaugrana !!! <a href="http://it.wikipedia.org/wiki/Futbol_Club_Barcelona" target="_blank">
+                                Forza Barcellona</a></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--footer-->
+            <div id="footer"></div>
 
         </div>
-
-
-
-
     </body>
-
-
 
 </html>
 
