@@ -14,64 +14,84 @@ and open the template in the  editor.
 
     <body>
         <div id="page">
-            <div id="header">
-                <h1 id="Title">Nerdbook</h1>
-                <nav>
-                <ul>
-                    <li><a href="profilo.html">Profilo</a></li>
-                        <li><a href="bacheca.html">Bacheca</a></li>
-                    </ul>
+            <header>
+                <div id="navbar">
+                    <div id="title">Nerdbook</div>
+
+                    <nav class="navbar navleft">                          
+                        <ul>
+                            <li><a class="nqui" href="bacheca.html">Bacheca</a></li>
+                            <li><a class="nqui" href="profilo.html">Profilo</a></li>
+                        </ul>                
                     </nav>
-                <div id="user">
-                    <div class="profilePic">
-                        <img src="img/nerd-urkel.jpg" alt="Foto Profilo">
-                    </div>
-                    <ul>
-                        <li><a href="profilo.html">Genoveffo</a></li>
-                    </ul>
+                    <nav class="navbar navright">                        
+                        <ul>
+                            <li><img class="imgelemen" title="profilo" alt="immagine avatar" src="img/nerd-urkel.jpg">
+                                <a class="nomeu" href="profilo.html">Genoveffo</a></li>           
+                            <li><a class="logout" href="login.html">Logout</a></li>
+                        </ul>   
+                    </nav>
                 </div>
-                
-            </div>
+            </header>
 
             <!--Barra di navigazione tra le pagine del sito-->
             <!--sidebar 1-->
-            <div id="sidebar1">
-                <h2>Navigazione</h2>
-                <ul>
-                    <li><a href="descrizione.html">Descrizione</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
+            <div id="sidebar">
+                <div id="persone">
+                    <h3>Persone</h3>
+                    <nav class="barralaterale">                        
+                        <ul>
+                            <li><div class="botdiv"><a href="bacheca.html">Matteo Anedda</a></div></li>
+                            <li><div class="botdiv"><a href="bacheca.html">Marta Usai</a></div></li>
+                            <li><div class="botdiv"><a href="bacheca.html">Marco Mura</a></div></li>
+                        </ul>             
+                    </nav>
+                </div>
+                <div id="gruppi">
+                    <h3>Gruppi</h3>
+                    <nav class="barralaterale">                        
+                        <ul>                
+                            <li><div class="botdiv"><a href="bacheca.html">Calcetto</a></div></li>                
+                        </ul>                
+                    </nav>
+                </div>
             </div>
 
             <div id="content">
-                <div id="formInfo">          
-                    <form action="ins">
+                <div class="form">
+                    <div class="immaginiprofilo">
+                        <img title="profilo" alt="immagine avatar" src="img/nerd-urkel.jpg">
+                    </div>
 
-                        <h2>Inserisci i tuoi dati</h2><br/>
-                        <label for="nome">Nome</label><input type="text" name="nome" id="nome" />
-                        <br><br>
-                        <label for="cognome">Cognome</label><input type="text" name="cognome" id="cognome" />
-                        <br><br>
-                        <label for="immagine">Immagine </label><input type="url" name="immagine" id="immagine" />
-                        <br><br>
-                        <label for="fdescrizione">Frase di Presentazione</label>
-                        <textarea name="fdescrizione" id="fdescrizione" cols="35" rows="2"></textarea>
-                        <br><br>
-                        <label for="data">Nato il</label><input type="date" name="data" id="data" />
-                        <br><br>
-                        <label for="inspassword">Password</label><input type="password" name="inspassword" id="inspassword" />
-                        <br><br>
-                        <label for="confpassword">Conferma Password</label><input type="password" name="confpassword" id="confpassword" />
-                        <br><br>
-                        <input type="submit" id="aggiorna" name="submit" value="Aggiorna" />
-                    </form>
-                </div> 
+                    <div class="areaform">         
+                        <form action="ins" method="post">
+                            <div class="textform">
+                                <label for="nome"><b>Nome</b></label><input type="text" name="nome" id="nome" value="Genoveffo" />
+                            </div>
+                            <div class="textform">
+                                <label for="cognome"><b>Cognome</b></label><input type="text" name="cognome" id="cognome" value="Rossi" />
+                            </div>
+                            <div class="textform">
+                                <label for="immagine"><b>Immagine</b> </label><input type="url" name="immagine" id="immagine"  />
+                            </div>
+                            <div class="textform">
+                                <label for="fdescrizione"><b>Frase di Presentazione</b></label><input type="text" name="fdescrizione" id="fdescrizione" value="lalala lalalaaaa" />
+                            </div>
+                            <div class="textform">
+                                <label for="data"><b>Nato il</b></label><input type="date" name="data" id="data" value="1990-02-03" />
+                            </div>
+                            <div class="textform">
+                                <label for="inspassword"><b>Password</b></label><input type="password" name="inspassword" id="inspassword" value="password"/>
+                            </div>
+                            <div class="textform">
+                                <label for="confpassword"><b>Conferma Password</b></label><input type="password" name="confpassword" id="confpassword" value="password" />
+                            </div>
+                            <button type="submit" >Aggiorna</button>
+                        </form>
+                    </div> 
 
+                </div>
             </div>
-
-            <!--footer-->
-            <div id="footer"></div>
-
         </div>
     </body>
 </html>

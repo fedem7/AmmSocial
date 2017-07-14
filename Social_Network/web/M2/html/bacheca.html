@@ -14,90 +14,105 @@ and open the template in the  editor.
 
     <body>
         <div id="page">
+            <header>
+                <div id="navbar">
+                    <div id="title">NerdBook</div>
 
-            <div id="header">
-
-                <h1 id="Title">Nerdbook</h1>
-                <nav>
-                <ul>
-                    <li><a href="profilo.html">Profilo</a></li>
-                        <li><a href="bacheca.html">Bacheca</a></li>
-                    </ul>
+                    <nav class="navbar navleft">                          
+                        <ul>
+                            <li><a class="nqui" href="bacheca.html">Bacheca</a></li>
+                            <li><a class="nqui" href="profilo.html">Profilo</a></li>
+                        </ul>                
                     </nav>
-                <div id="user">
-                    <div class="profilePic">
-                        <img src="img/nerd-urkel.jpg" alt="Foto Profilo">
-                    </div>
-                    <ul>
-                        <li><a href="profilo.html">Genoveffo</a></li>
-                    </ul>
+                    <nav class="navbar navright">                        
+                        <ul>
+                            <li><img class="imgelemen" title="profilo" alt="immagine avatar" src="img/nerd-urkel.jpg">
+                                <a class="nomeu" href="profilo.html">Genoveffo</a></li>           
+                            <li><a class="logout" href="login.html">Logout</a></li>
+                        </ul>   
+                    </nav>
                 </div>
-
-            </div>
+            </header>
 
             <!--Barra di navigazione tra le pagine del sito-->
             <!--sidebar 1-->
-            <div id="sidebar1">
-                <h2>Navigazione</h2>
-                <ul>
-                    <li><a href="descrizione.html">Descrizione</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
+            <div id="sidebar">
+                <div id="persone">
+                    <h3>Persone</h3>
+                    <nav class="barralaterale">                        
+                        <ul>
+                            <li><div class="botdiv"><a href="bacheca.html">Matteo Anedda</a></div></li>
+                            <li><div class="botdiv"><a href="bacheca.html">Marta Usai</a></div></li>
+                            <li><div class="botdiv"><a href="bacheca.html">Marco Mura</a></div></li>
+                        </ul>             
+                    </nav>
+                </div>
+                <div id="gruppi">
+                    <h3>Gruppi</h3>
+                    <nav class="barralaterale">                        
+                        <ul>                
+                            <li><div class="botdiv"><a href="bacheca.html">Calcetto</a></div></li>                
+                        </ul>                
+                    </nav>
+                </div>
             </div>
-
 
             <div id="content">
-                <!--lista dei post-->
-                <div id="Post">                 
-                    <div class="post">
-                        <div class="profilePic2">
-                            <!--Nome utente post1 e Foto profilo-->
-                            <img src="img/imges.jpg" alt="Foto Profilo"/> 
-                        </div>
-                        <h2>Matteo Anedda</h2>
 
-                        <!--Post di testo-->
-
-                        <p>Ciao e buona giornata a tutti !!!</p>
-                    </div>
-                    <br/>
-
-                    <div class="post">
-                        <div class="profilePic2">
-                            <!--Nome utente post2 e Foto profilo-->
-                            <img src="img/gatto.jpg" alt="Foto Profilo"/> 
-                        </div>
-                        <h2>Marta Usai</h2> 
-                        <!--Post con una foto-->
-                        <div class="postimg">
-                            <img alt="Scimmia" src="img/imagesPost.jpg" >
-                        </div>
-                    </div>
-                    <br/> 
-
-                    <div class="post">
-                        <div class="profilePic2">
-                            <!--Nome utente post3 e Foto profilo-->
-                            <img src="img/messi.jpg" alt="Foto Profilo"/>
-                        </div>
-                        <h2>Marco Mura</h2> 
-
-                        <!--Post con link-->
-
-                        <p> Vamos blaugrana !!! <a href="http://it.wikipedia.org/wiki/Futbol_Club_Barcelona" target="_blank">
-                                Forza Barcellona</a></p>
-
-                    </div>
-
+                <div id="stato">
+                    <img class="imgelemen" title="profilo" alt="immagine avatar" src="img/nerd-urkel.jpg">
+                    <p><strong>Genoveffo :</strong></p>
+                    <p>lalala lalalaaaa</p>
                 </div>
 
+                <div id="divnuovopost">
+                    <form class="nuovopost" name="nuovopost" action="bacheca.html" method="post"> 
+                        <div class="nuovopost">
+                            <div class="profilo"><img class="imgprofilo" title="profilo" alt="immagine avatar" src="img/nerd-urkel.jpg"></div>
+                            <textarea  name="testo" id="testo"></textarea>
+                        </div>
+                        <div class="nuovopost">
+                            <input type="text" name="image" id="avatar" placeholder="inserisci la tua immagine">
+                        </div>
+                        <div>
+                            <button type="submit" >Pubblica</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!--lista dei post-->                 
+                <div class="newpost">
+                    <div class="profilo">
+                        <!--Nome utente post1 e Foto profilo-->
+                        <img class="imgprofilo" title="profilo" alt="immagine avatar" src="img/imges.jpg">
+                        <div class="nameprofilo"><a href="bacheca.html">Matteo Anedda</a></div>
+                        <!--Post di testo-->
+                        <div class="testopost"><p>Ciao e buona giornata a tutti !!!</p></div>
+                    </div>
+                </div>
+
+                <div class="newpost">
+                    <div class="profilo">
+                        <!--Nome utente post2 e Foto profilo-->
+                        <img class="imgprofilo" title="profilo" alt="immagine avatar" src="img/gatto.jpg">
+                        <div class="nameprofilo"><a href="bacheca.html">Marta Usai</a></div>
+                        <div class="img_post"><img alt="Scimmia" src="img/imagesPost.jpg" ></div>
+                    </div>
+                </div>
+
+                <div class="newpost">
+                    <div class="profilo">
+                        <!--Nome utente post3 e Foto profilo-->
+                        <img class="imgprofilo" title="profilo" alt="immagine avatar" src="img/messi.jpg">
+                        <div class="nameprofilo"><a href="bacheca.html">Marco Mura</a></div>
+                        <!--Post con link-->
+                        <div class="link_post"><p> Vamos blaugrana !!! <a href="http://it.wikipedia.org/wiki/Futbol_Club_Barcelona" target="_blank">
+                                    Forza Barcellona</a></p></div>
+                    </div>
+                </div>
             </div>
-
-            <!--footer-->
-            <div id="footer"></div>
-
         </div>
-    </body>
 
+    </body>
 </html>
 

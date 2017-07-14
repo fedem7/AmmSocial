@@ -14,35 +14,32 @@ and open the template in  the editor.
 
     <body>
         <div id="page">
-            <div id="header">
-                <h1 id="titlelogin"><span>Nerdbook</span></h1>
+            <!--header-->
+            <header class="perLogin">
+                <div id="titleLogin">
+                    <h1>NerdBook</h1>
+                </div>
+            </header>
+
+            <div id="content">
+                <div id="divlogin">
+                    <form method="post" action="Login">
+                        <div id="divform">
+                            <div id="texar">
+                                <input type="hidden" name="cmd" value="login"/>
+                                <label for="useri">Username</label> 
+                                <input type="text" name="useri" id="useri"/>
+                                <label for="password">Password</label> 
+                                <input type="password" name="password" id="password"/> 
+                            </div>
+                            <button type="submit">Accedi</button> 
+                        </div>
+                    </form>
+                </div>
             </div>
-
-
-
-
-            <!--Login-->
-            <div class="input-form">
-
-                <form method="post" action="login">
-                    <input type="hidden" name="cmd" value="login"/>
-                    <label for="useri">Username</label> <br/>
-                    <input type="text" name="useri" id="useri"/><br/>
-                    <label for="password">Password</label> <br/>
-                    <input type="password" name="password" id="password"/> 
-                    <br/>
-                    <input type="submit" value="Login"/>
-
-
-                </form>
-
-            </div>
-
-
 
             <!--footer-->
             <div id="footer"></div>
-
         </div>
     </body>
 </html>
