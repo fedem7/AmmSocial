@@ -1,0 +1,44 @@
+utente:
+- id int (chiave primaria)
+- nome string
+- cognome string
+- dataNascita date
+- frasePresentazione string
+- password string
+- urlFotoProfilo string
+
+postType:
+- id int  (chiave primaria)
+- nomeTipo string
+
+post:
+- id int  (chiave primaria)
+- content string
+- urlAllegato string
+
+gruppo:
+- id int (chiave primaria)
+- nome string
+
+
+
+
+
+
+amicizie:
+- Relazione molti a molti da utente a utente 
+
+amministratore gruppo:
+- Relazione uno a molti da utente a gruppo 
+
+membri gruppo:
+- Relazione molti a molti da utente a gruppo, un utente può essere iscritto a molti gruppi,a un gruppo possono iscriversi molti utenti 
+
+post autore:
+- Relazione uno a molti da post a utente, un post può appartenere a un sono utente,un utente puo scrivere molti post
+
+post gruppo:
+- Relazione uno a molti da post a gruppo 
+
+tipo di post
+-Relazione uno a molti da post a postType 

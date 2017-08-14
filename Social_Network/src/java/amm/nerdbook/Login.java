@@ -7,7 +7,11 @@ package amm.nerdbook;
 
 import amm.nerdbook.classi.Utente;
 import amm.nerdbook.classi.UtenteFactory;
+import amm.nerdbook.classi.GruppoFactory;
+import amm.nerdbook.classi.PostFactory;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author edef
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
+@WebServlet(name = "Login", urlPatterns = {"/Login"}, loadOnStartup = 0)
 public class Login extends HttpServlet {
 
     /**
@@ -31,6 +35,27 @@ public class Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
+    
+    @Override
+    public void init() {
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        UtenteFactory.getInstance().setConnectionString(dbConnection);
+        GruppoFactory.getInstance().setConnectionString(dbConnection);
+        PostFactory.getInstance().setConnectionString(dbConnection);
+        
+    }
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -48,7 +73,6 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
-        
         
         //Utente già loggato
         if (session.getAttribute("loggedIn") != null &&
@@ -84,7 +108,8 @@ public class Login extends HttpServlet {
                 loggedUserID = UtenteFactory.getInstance().getIdByUserAndPassword(username, password);
                 
                 if(loggedUserID >= 0)
-                {                  
+                {
+                    
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("loggedUserID", loggedUserID);
                     
@@ -99,7 +124,9 @@ public class Login extends HttpServlet {
                     else
                     {
                         request.getRequestDispatcher("Bacheca").forward(request, response);
-                    }              
+                    }
+                    
+                    
                     return;
                 } else { 
                     
@@ -107,12 +134,9 @@ public class Login extends HttpServlet {
                     request.setAttribute("invalidData", loggedUserID);
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                     return;
-                }
-                
-                
+                }               
             }
-        }
-        
+        }        
         /*
           Se non si verifica nessuno degli altri casi, 
           tentativo di accesso diretto alla servlet Login -> reindirizzo verso 
@@ -120,6 +144,7 @@ public class Login extends HttpServlet {
         */
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

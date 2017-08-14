@@ -9,7 +9,7 @@
         <nav class="barralaterale">                        
             <ul>
                 <c:forEach var="usr" items="${utenti}"> 
-                    <li><div class="botdiv"><a href="bacheca.html?user=0${usr.getId()}">${usr.getUsername()}</a></div></li>
+                    <li><div class="botdiv"><a href="bacheca.html?user=0${usr.getId()}">${usr.getNomeCognome()}</a></div></li>
                         </c:forEach>
             </ul>                
         </nav>

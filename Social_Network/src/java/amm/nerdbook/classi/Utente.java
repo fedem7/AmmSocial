@@ -5,6 +5,8 @@
  */
 package amm.nerdbook.classi;
 import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -15,22 +17,25 @@ public class Utente {
     private int id;
     private String nome;
     private String cognome;
-    private String dataNascita;
+    private Date dataNascita; 
     private String frasePresentazione;
     private String password;
     private String urlFotoProfilo;
-    private ArrayList<Utente> listaAmici;
+    private boolean superUtente;
+    private String username;
+
 
     public Utente() {
         id = 0;
-        nome = "";
-        cognome = "";
-        dataNascita = "";
-        frasePresentazione = "";
-        password = "";
-        urlFotoProfilo = "";
-        listaAmici = new ArrayList<Utente>();
+        nome = null;
+        cognome = null;
+        dataNascita = null;
+        frasePresentazione = null;
+        password = null;
+        urlFotoProfilo = null;
+        superUtente = false;
     }
+
 
     /**
      * @return the id
@@ -77,18 +82,7 @@ public class Utente {
     /**
      * @return the dataNascita
      */
-    public String getDataNascita() {
-
-        return dataNascita;
-    }
-
-    /**
-     * @param dataNascita the dataNascita to set
-     */
-    public void setDataNascita(String dataNascita) {
-        this.dataNascita = dataNascita;
-    }
-
+    
     /**
      * @return the frasePresentazione
      */
@@ -130,25 +124,68 @@ public class Utente {
     public void setUrlFotoProfilo(String urlFotoProfilo) {
         this.urlFotoProfilo = urlFotoProfilo;
     }
+    
+    
 
-    public String getUsername() {
-        if (this.nome == null || this.cognome == null) {
-            return "user" + this.id;
+    /**
+     * @return the dataNascita
+     */
+    public Date getDataNascita() {
+        return dataNascita;
+    }
+    
+    public String getDataNascitaString() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        
+        return df.format(this.dataNascita);
+    }
+
+    /**
+     * @param dataNascita the dataNascita to set
+     */
+    public void setDataNascita(Date dataNascita) {
+        this.dataNascita = dataNascita;
+    }
+    
+    public void setDataNascita(String dataNascita) throws ParseException {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        
+        this.dataNascita = df.parse(dataNascita);
+    }
+
+    /**
+     * @return the superUtente
+     */
+    public boolean isSuperUtente() {
+        return superUtente;
+    }
+
+    /**
+     * @param superUtente the superUtente to set
+     */
+    public void setSuperUtente(boolean superUtente) {
+        this.superUtente = superUtente;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    public String getUsername() 
+    {
+        return this.username;
+    }
+    
+    public String getNomeCognome()
+    {
+        if(this.nome != null && this.cognome != null)
+        {
+            return this.nome + " " + this.cognome;
         }
-        return nome + " " + cognome;
-    }
-
-    /**
-     * @return the listaAmici
-     */
-    public ArrayList<Utente> getListaAmici() {
-        return listaAmici;
-    }
-
-    /**
-     * @param listaAmici the listaAmici to set
-     */
-    public void setListaAmici(ArrayList<Utente> listaAmici) {
-        this.listaAmici = listaAmici;
+        else
+        {
+            return this.getUsername();
+        }
+        
     }
 }

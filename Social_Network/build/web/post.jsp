@@ -11,7 +11,7 @@
 
         <div class="profilo">
             <img class="imgprofilo" title="profilo" alt="immagine profilo" src="${post.getAutore().getUrlFotoProfilo()}">
-            <div class="nameprofilo"><a href="bacheca.html?user=0${post.getAutore().getId()}">${post.getAutore().getUsername() }</a></div>
+            <div class="nameprofilo"><a href="bacheca.html?user=0${post.getAutore().getId()}">${post.getAutore().getNomeCognome() }</a></div>
         </div>
         <div class="testopost"><p>${post.getContent()}</p></div>
         <c:if test="${post.postType == 'LINK'}"><div class="link_post"><a href="${post.getUrlAllegato()}">${post.getUrlAllegato()}</a></div></c:if>

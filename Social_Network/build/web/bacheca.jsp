@@ -34,64 +34,73 @@
                 </c:if>
                 <c:if test="${gruppo != null}">
                     <div id="stato">
-
                         <p><strong>${gruppo.getNomeGruppo()}</strong></p>
-
                     </div>
                 </c:if>
 
-                <div id="divnuovopost">
-                    <c:if test="${proprietario != null}">
-                        <c:set var="urlAction" value="Bacheca?user=${proprietario.getId()}"/> 
-                    </c:if>
-                    <c:if test="${gruppo != null}">
-                        <c:set var="urlAction" value="Bacheca?group=${gruppo.getId()}"/>
-                    </c:if>
-                    <form class="nuovopost" name="nuovopost" action="${urlAction}" method="post"> 
-                        <div class="nuovopost">
-                            <div class="profilo"><img class="imgprofilo" title="profilo" alt="immagine profilo" src="${utenteLoggato.getUrlFotoProfilo()}"></div>
-                            <textarea  name="testo" id="testo"></textarea>
+                <c:choose>
+                    <c:when test="${empty newpost}">
+                        <div id="divnuovopost" class="post">
+                            <c:if test="${proprietario != null}">
+                                <c:set var="urlAction" value="Bacheca?user=${proprietario.getId()}"/> 
+                            </c:if>
+                            <c:if test="${gruppo != null}">
+                                <c:set var="urlAction" value="Bacheca?group=${gruppo.getId()}"/>
+                            </c:if>
+                            <c:if test="${!empty errorMessage}">
+                                <div id="invalidDataWarning">${errorMessage}</div>
+                            </c:if>
+
+                            <form class="nuovopost" name="nuovopost" action="${urlAction}" method="post"> 
+                                <div class="nuovopost">
+                                    <div class="profilo"><img class="imgprofilo" title="profilo" alt="immagine profilo" src="${utenteLoggato.getUrlFotoProfilo()}"></div>
+                                </div>
+
+                                <textarea  name="testo" id="testo"></textarea>
+                                <div class="nuovopost">
+                                    <input type="url" name="allegato" id="allegato" placeholder="inserisci allegato">
+                                </div>
+
+                                <input class="hidden" type="text" hidden name="userp" id="userp"
+                                       value="${utenteLoggato.getId()}" />
+
+                                <input class="hidden" type="text" hidden name="userd" id="userd"
+                                       value="${proprietario.getId()}" />
+
+                                <input class="hidden" type="text" hidden name="groupd" id="groupd"
+                                       value="${gruppo.getId()}" />
+
+                                <button type="submit" name="thereIsPost" value="needConfirm">Crea post</button>
+                            </form>
                         </div>
-                        <div class="nuovopost">
-                            <input type="url" name="allegato" id="allegato" placeholder="inserisci allegato">
-                        </div>
 
-                        <div>
-                            <button type="submit" >Pubblica</button>
-                        </div>
-                    </form>
+                    </c:when>
+                    <c:when test="${newpost == 'true'}">
+                        <div id="contentpost">
+                            <c:set var="page" value="Bacheca Personale" scope="request"/>
+                            <jsp:include page="newpost.jsp"/>
+                        </div>       
+                    </c:when>
 
-                </div>
+                    <c:otherwise>
+                        <c:if test="${!empty proprietario}">
+                            <div id ="confermaPost">
+                                <h3>Hai scritto sulla bacheca di <a href="bacheca.html?user=0${proprietario.getId()}">${proprietario.getNomeCognome()}</a></h3>
+                            </div>
+                        </c:if>
 
-                <c:if test="${click == 1}">
-                    <div id="contentpost">
-                        <c:set var="page" value="Bacheca Personale" scope="request"/>
-                        <jsp:include page="newpost.jsp"/>
-                    </div>
-                </c:if>
-
-                <c:if test="${click == 2}">
-
-                    <c:if test="${!empty proprietario}">
-                        <div id ="confermaPost">
-                            <h3>Hai scritto sulla bacheca di <a href="bacheca.html?user=0${proprietario.getId()}">${proprietario.getUsername()}</a></h3>
-                        </div>
-                    </c:if>
-
-
-                    <c:if test="${!empty gruppo}">
-                        <div id ="confermaPost">
-                            <h3>Hai scritto sulla bacheca di <a href="bacheca.html?group=0${gruppo.getId()}">${gruppo.getNomeGruppo()}</a></h3>
-                        </div>
-                    </c:if>
-                </c:if>
-
+                        <c:if test="${!empty gruppo}">
+                            <div id ="confermaPost">
+                                <h3>Hai scritto sulla bacheca del gruppo <a href="bacheca.html?group=0${gruppo.getId()}">${gruppo.getNomeGruppo()}</a></h3>
+                            </div>
+                        </c:if>
+                    </c:otherwise>
+                </c:choose>
 
                 <div id="contentpost">
                     <c:set var="page" value="Bacheca Personale" scope="request"/>
                     <jsp:include page="post.jsp"/>
                 </div>
-
             </div>
         </div>
     </div>

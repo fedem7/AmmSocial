@@ -19,7 +19,7 @@
                 <c:if test="${not empty utenteLoggato.password}">
 
                     <li><img class="imgelemen" title="profilo" alt="immagine avatar"src="${utenteLoggato.getUrlFotoProfilo()}"><a class="nomeu" href="bacheca.html">
-                            <c:out value="${utenteLoggato.getUsername()}"/></a></li>
+                            <c:out value="${utenteLoggato.getNomeCognome()}"/></a></li>
                         </c:if>
 
                 <c:if test="${not empty utenteLoggato.password}">

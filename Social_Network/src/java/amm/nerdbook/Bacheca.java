@@ -50,6 +50,7 @@ public class Bacheca extends HttpServlet {
         Utente loggato = null;
         Utente proprietarioBacheca = null;
         Gruppo gruppoBacheca = null;
+        
 
         HttpSession session = request.getSession(false);
         
@@ -78,7 +79,6 @@ public class Bacheca extends HttpServlet {
             }
 
 
-            // variabili per navbar e sidebar
             loggato = UtenteFactory.getInstance().getUtenteById(utenteLoggato);
 
             List<Utente> utenti = UtenteFactory.getInstance().getListaUtenti();
@@ -88,65 +88,88 @@ public class Bacheca extends HttpServlet {
             request.setAttribute("utenti", utenti);
             request.setAttribute("gruppi", gruppi);
 
-            // form bacheca
             
-            String groupd = request.getParameter("groupd");
-            String userd = request.getParameter("userd");
-            String userp = request.getParameter("userp");
-            String testo = request.getParameter("testo");
-            String allegato = request.getParameter("allegato");
-            String tipo = request.getParameter("tipo");
-            String click = request.getParameter("click");
-            
-            
-            if(userp != null)
-            {
-                userID = Integer.parseInt(userp);
-            }
-            else
-            {
-                userID = utenteLoggato;
-            }
-            
-            if(userID == utenteLoggato)
+            if(request.getParameter("thereIsPost")!=null)
             {
                 
-                if ( testo != null || allegato != null )
+                String thereIsPost = request.getParameter("thereIsPost");
+                String userd = request.getParameter("userd");
+                String groupd = request.getParameter("groupd");
+                String userp = request.getParameter("userp");
+                String s = request.getParameter("testo"); 
+                String testo = new String (s.getBytes("ISO-8859-1"), "UTF-8"); 
+                String allegato = request.getParameter("allegato");
+                
+                
+                if(userp != null)
                 {
-                    request.setAttribute("testo", testo);
-                    request.setAttribute("tipo", tipo);
-                    request.setAttribute("allegato", allegato);
-                    
-                    if(userd != null)
-                    {
-                        request.setAttribute("proprietario", proprietarioBacheca);
-                    }
-                    else
-                    {
-                        request.setAttribute("gruppo", gruppoBacheca);
-                    }
-                     
-                    request.setAttribute("click", 1);
+                    userID = Integer.parseInt(userp);
                 }
                 else
                 {
-                    if(click != null && click.equals("2"))
-                    {
-                        request.setAttribute("click", 2);
+                    userID = utenteLoggato;
+                }
+                
+                if(userID == utenteLoggato)
+                {
+                
+                    if(thereIsPost.equals("needConfirm")){
+                        
+                        request.setAttribute("userp2", userp);
+                        request.setAttribute("userd2", userd);
+                        request.setAttribute("groupd2", groupd);
+                        request.setAttribute("testo2", testo);
+                        
+                        request.setAttribute("allegato2", allegato);
+                        if((testo == null || testo.equals("")) && (allegato == null || allegato.equals("")))
+                        {
+                            request.setAttribute("errorMessage", "non puoi pubblicare un post vuoto!");
+                            
+                            
+                        }
+                        else
+                        {
+                            request.setAttribute("newpost", "true");
+                        }
+                        
                     }
-                    else
-                    {
-                        request.setAttribute("click", 0);
+                    else{
+                        
+                        request.setAttribute("newpost", "false");
+                        
+                        
+                        Post post = new Post();
+                        post.setAutore(loggato);
+                        if(groupd != null && gruppoBacheca != null)
+                        {
+                            post.setUser(null);
+                            post.setGroup(gruppoBacheca);
+                        }
+                        else if(userd != null && proprietarioBacheca != null)
+                        {
+                            post.setUser(proprietarioBacheca);
+                            post.setGroup(null);
+                        }
+                        else
+                        {
+                            response.sendError(500, "gruppo o utente non trovato");
+                        }
+                        
+                        post.setContent(testo);
+                        post.setUrlAllegato(allegato);
+                        
+                        PostFactory.getInstance().addNewPost(post);
+        
                     }
-                }                
+                    
+                }else
+                {
+                    response.sendError(400, "stai tentando di utilizzare un profilo che non ti appartiene!");
+                    return;
+                }
             }
             
-            else{
-                
-                response.sendError(400, "stai provando a utilizzare un profilo che non ti appartiene!");
-                return;
-            }
-
+    
             if(proprietarioBacheca != null){
 
                 List<Post> posts = PostFactory.getInstance().getPostByUtente(proprietarioBacheca);
