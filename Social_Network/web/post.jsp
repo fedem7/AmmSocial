@@ -16,6 +16,5 @@
         <div class="testopost"><p>${post.getContent()}</p></div>
         <c:if test="${post.postType == 'LINK'}"><div class="link_post"><a href="${post.getUrlAllegato()}">${post.getUrlAllegato()}</a></div></c:if>
         <c:if test="${post.postType == 'IMAGE'}"><div class="img_post"> <img alt="immagine casuale" src="${post.getUrlAllegato()}"> </div></c:if>
-
         </div>
 </c:forEach>

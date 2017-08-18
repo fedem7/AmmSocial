@@ -4,6 +4,7 @@
 */
 
 /* Task 3 */
+
 html,body,#page{
     position: relative;
     background-color: #e4e4e4;
@@ -128,8 +129,8 @@ header{
 
 header ul, header li{
     padding-left: 0px;
-
 }
+
 .navbar { 
     padding-left: 5px;
     padding-right:5px;
@@ -192,41 +193,19 @@ header ul, header li{
     border-radius: 2px;
 }
 
-#sidebar{
-    overflow: hidden;
-    white-space:nowrap;
-    background-color: #e9ebee;
-    box-shadow: 3px 3px 20px #333745;
-    border-radius: 10px;
-    clear: both;
-    z-index: 1;
-}
-
-h1#sidebar{
-    margin-top: 0px;
-}
-
 #sidebar ol, #sidebar li, #sidebar ul{
     list-style-type: none;
     margin-left: 0px; 
     padding-left: 0px;
 }
 
-.barralaterale a:link, .barralaterale a:visited {
-    font: 14px/25px  "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-    color: #365899;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.botdiv {
+#gruppi li, #persone li {
     float:left;
     width: 100%;
     border-radius: 5px;
 }
 
-.botdiv:hover{
+#gruppi li:hover, #persone li:hover{
     background-color: white;
     float:left;
     width: 100%;
@@ -235,10 +214,6 @@ h1#sidebar{
 
 #persone, #gruppi{
     float:left;
-}
-
-#persone a {
-    text-align: center;
 }
 
 #content{
@@ -316,6 +291,7 @@ h1#sidebar{
     border: solid thin #333745;
     border-radius: 5px;
 }
+
 .immaginiprofilo{
     float:left;
     width: 150px;
@@ -403,7 +379,6 @@ h1#sidebar{
 #stato p strong{
     margin-left: -10px;
 }
-
 
 .newpost,.confPost{
     margin-left: 50px;
@@ -564,7 +539,6 @@ h1#sidebar{
         font-size: 12px;
     }
 
-
     #sidebar{
         margin-top: 85px;
         margin-left: 5px;
@@ -575,8 +549,22 @@ h1#sidebar{
         padding: 5px;
     }
 
-    .botdiv {
-        padding: 3px;
+    #sidebar{
+        overflow: hidden;
+        white-space:nowrap;
+        background-color: #e9ebee;
+        box-shadow: 3px 3px 20px #333745;
+        border-radius: 10px;
+        clear: both;
+        z-index: 1;
+    }
+
+    .barralaterale a:link, .barralaterale a:visited {
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
     }
 
     #content{
@@ -584,12 +572,6 @@ h1#sidebar{
         margin-left: 160px;
         width: 80%;
         padding-left: 1px;
-    }
-
-    .img_post iframe{
-        border-radius: 5px;
-        margin-bottom: 5px;
-        overflow: hidden;
     }
 
     #stato{
@@ -601,6 +583,7 @@ h1#sidebar{
         width:500px;
         margin-left: 150px;
     }
+
     #confermaPost{
         width:500px;
         margin-left: 180px;
@@ -633,6 +616,7 @@ h1#sidebar{
         margin-left: 17px;   
         float:left;
     }
+    
     #texar button{
         width:  360px;
     }
@@ -655,6 +639,32 @@ h1#sidebar{
     .form button{
         width: 100%;       
     }
+
+    #sidebar #barraRicerca{
+        display: inline-block;
+        width: 150px;
+        margin-top:10px;
+
+    }
+
+    #sidebar input{
+        margin-bottom: 5px;
+        margin-top: 5px;
+        width: 136px;
+        height: 20px;
+    }
+
+    #sidebar button{
+        width: 150px;
+        float: left;
+        margin-top: 5px;
+        height: 30px;
+    }
+
+    #sidebar #invalidDataWarning{
+        font-size: 16px;
+        margin-left: 0px;
+    }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 1023px){
@@ -676,10 +686,21 @@ h1#sidebar{
     .navleft{
         position: relative;
         top: 0px;
-        left: 20px;
+        left: 18px;
         display: inline-block;
-        padding-top: 10px;
+        height: 75px;
     }
+
+    .nqui{
+        padding-left: 4px;
+    }
+
+    .navleft ul, .navleft li{
+        margin-top: 0px;
+        height: 70px;
+        font-size: 23px;
+        line-height: 70px;
+    }    
 
     .navright{
         float:right;
@@ -711,8 +732,22 @@ h1#sidebar{
         padding: 5px;
     }
 
-    .botdiv {
-        padding: 3px;
+    #sidebar{
+        overflow: hidden;
+        white-space:nowrap;
+        background-color: #e9ebee;
+        box-shadow: 3px 3px 20px #333745;
+        border-radius: 10px;
+        clear: both;
+        z-index: 1;
+    }
+
+    .barralaterale a:link, .barralaterale a:visited {
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
     }
 
     #content{
@@ -725,12 +760,6 @@ h1#sidebar{
     #stato{
         margin-top: 5px;
         margin-left: 15px;
-    }
-
-    .img_post iframe{
-        border-radius: 5px;
-        margin-bottom: 5px;
-        overflow: hidden;
     }
 
     #divnuovopost,.newpost,.confPost{
@@ -787,6 +816,32 @@ h1#sidebar{
 
     .form button{
         width: 100%;       
+    }
+    
+    #sidebar #barraRicerca{
+        display: inline-block;
+        width: 150px;
+        margin-top:10px;
+
+    }
+
+    #sidebar input{
+        margin-bottom: 5px;
+        margin-top: 5px;
+        width: 136px;
+        height: 20px;
+    }
+
+    #sidebar button{
+        width: 150px;
+        float: left;
+        margin-top: 5px;
+        height: 30px;
+    }
+    
+    #sidebar #invalidDataWarning{
+        font-size: 16px;
+        margin-left: 0px;
     }
 }
 
@@ -871,8 +926,8 @@ h1#sidebar{
         left:6px;
         font-size: 9px;
         padding-top:5px; 
-
     }
+    
     #stato,#divnuovopost,.newpost{
         box-shadow: 0 0 5px rgba(0,0,0,0.2);
     }
@@ -897,11 +952,9 @@ h1#sidebar{
         font-size: 12px;
     }
 
-
     .img_post img{
         margin-top: 5px
     }
-
 
     #sidebar1{
         display: none;
@@ -935,11 +988,51 @@ h1#sidebar{
     }
 
     #sidebar{
-        visibility: hidden;
+        position:relative;
+        margin-top: 95px;
+        margin-left: 10px;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .barralaterale a:link, .barralaterale a:visited {
+        font-size:14px;  
+        font-family: "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    #sidebar input{
+        width: 96.5%;
+        margin-bottom: 5px;
+    } 
+
+    #sidebar button{
+        width: 100%;
+        float: left;
+        height: 30px;
+    }
+
+    #sidebar h3{
+        width: 100%;
+        text-align: center; 
+        font-size: 18px;
+    }
+
+    #sidebar #persone, #sidebar #gruppi{
+        width: 100%;
+    }
+
+    #sidebar #invalidDataWarning{
+        font-size: 18px;
+        margin-left: 0px;
     }
 
     #content{
-        margin-top: 0px;
+        margin-top: 10px;
         margin-left: auto;
         margin-right: auto;
         width: 100%;
@@ -951,6 +1044,11 @@ h1#sidebar{
         height: 30px;
         max-width: 100%;
         margin-left: 5px; 
+    }
+
+    .imgprofilo{
+        margin-right: 5px;
+        margin-bottom: 5px;
     }
 
     #divlogin {

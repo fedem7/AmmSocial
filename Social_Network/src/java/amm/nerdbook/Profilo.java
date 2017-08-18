@@ -92,7 +92,7 @@ public class Profilo extends HttpServlet {
                     userID = utenteLoggato;
                 }
 
-//modifica dati
+                //modifica dati
                 if (userID == utenteLoggato) {
                     if (modificaProfilo.equals("needConfirm")) {
                         if (newPassword != null && confPsw != null && newPassword.equals(confPsw)) {
@@ -138,8 +138,8 @@ public class Profilo extends HttpServlet {
                     response.sendError(400, "stai tentando di modificare i dati di un profilo che non ti appartiene!");
 
                 }
-            
-//cancellazione profilo
+
+                //cancellazione profilo
             } else if (request.getParameter("cancellaProfilo") != null) {
                 String userp = request.getParameter("userp");
                 String cancellaProfilo = request.getParameter("cancellaProfilo");

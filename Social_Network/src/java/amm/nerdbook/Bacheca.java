@@ -39,7 +39,7 @@ public class Bacheca extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("user");
         String group = request.getParameter("group");
@@ -50,34 +50,27 @@ public class Bacheca extends HttpServlet {
         Utente loggato = null;
         Utente proprietarioBacheca = null;
         Gruppo gruppoBacheca = null;
-        
 
         HttpSession session = request.getSession(false);
-        
-        if(session!=null && 
-           session.getAttribute("loggedIn")!=null &&
-           session.getAttribute("loggedIn").equals(true)){
-            
-            
-            
-            utenteLoggato = (Integer)session.getAttribute("loggedUserID");
 
-            if(user != null){
+        if (session != null
+                && session.getAttribute("loggedIn") != null
+                && session.getAttribute("loggedIn").equals(true)) {
+
+            utenteLoggato = (Integer) session.getAttribute("loggedUserID");
+
+            if (user != null) {
 
                 userID = Integer.parseInt(user);
                 proprietarioBacheca = UtenteFactory.getInstance().getUtenteById(userID);
 
-            } else if(group != null)
-            {
+            } else if (group != null) {
                 groupID = Integer.parseInt(group);
                 gruppoBacheca = GruppoFactory.getInstance().getGruppoById(groupID);
 
-
-            }else
-            {
+            } else {
                 proprietarioBacheca = UtenteFactory.getInstance().getUtenteById(utenteLoggato);
             }
-
 
             loggato = UtenteFactory.getInstance().getUtenteById(utenteLoggato);
 
@@ -88,116 +81,92 @@ public class Bacheca extends HttpServlet {
             request.setAttribute("utenti", utenti);
             request.setAttribute("gruppi", gruppi);
 
-            
-            if(request.getParameter("thereIsPost")!=null)
-            {
-                
+            if (request.getParameter("thereIsPost") != null) {
+
                 String thereIsPost = request.getParameter("thereIsPost");
                 String userd = request.getParameter("userd");
                 String groupd = request.getParameter("groupd");
                 String userp = request.getParameter("userp");
-                String s = request.getParameter("testo"); 
-                String testo = new String (s.getBytes("ISO-8859-1"), "UTF-8"); 
+                String s = request.getParameter("testo");
+                String testo = new String(s.getBytes("ISO-8859-1"), "UTF-8");
                 String allegato = request.getParameter("allegato");
-                
-                
-                if(userp != null)
-                {
+
+                if (userp != null) {
                     userID = Integer.parseInt(userp);
-                }
-                else
-                {
+                } else {
                     userID = utenteLoggato;
                 }
-                
-                if(userID == utenteLoggato)
-                {
-                
-                    if(thereIsPost.equals("needConfirm")){
-                        
+
+                if (userID == utenteLoggato) {
+
+                    if (thereIsPost.equals("needConfirm")) {
+
                         request.setAttribute("userp2", userp);
                         request.setAttribute("userd2", userd);
                         request.setAttribute("groupd2", groupd);
                         request.setAttribute("testo2", testo);
-                        
                         request.setAttribute("allegato2", allegato);
-                        if((testo == null || testo.equals("")) && (allegato == null || allegato.equals("")))
-                        {
+
+                        if ((testo == null || testo.equals("")) && (allegato == null || allegato.equals(""))) {
                             request.setAttribute("errorMessage", "non puoi pubblicare un post vuoto!");
-                            
-                            
-                        }
-                        else
-                        {
+
+                        } else {
                             request.setAttribute("newpost", "true");
                         }
-                        
-                    }
-                    else{
-                        
+
+                    } else {
+
                         request.setAttribute("newpost", "false");
-                        
-                        
+
                         Post post = new Post();
                         post.setAutore(loggato);
-                        if(groupd != null && gruppoBacheca != null)
-                        {
+                        if (groupd != null && gruppoBacheca != null) {
                             post.setUser(null);
                             post.setGroup(gruppoBacheca);
-                        }
-                        else if(userd != null && proprietarioBacheca != null)
-                        {
+                        } else if (userd != null && proprietarioBacheca != null) {
                             post.setUser(proprietarioBacheca);
                             post.setGroup(null);
-                        }
-                        else
-                        {
+                        } else {
                             response.sendError(500, "gruppo o utente non trovato");
                         }
-                        
+
                         post.setContent(testo);
+
                         post.setUrlAllegato(allegato);
-                        
+                        post.riconoscimentoPost();
                         PostFactory.getInstance().addNewPost(post);
-        
+
                     }
-                    
-                }else
-                {
+
+                } else {
                     response.sendError(400, "stai tentando di utilizzare un profilo che non ti appartiene!");
                     return;
                 }
             }
-            
-    
-            if(proprietarioBacheca != null){
+
+            if (proprietarioBacheca != null) {
 
                 List<Post> posts = PostFactory.getInstance().getPostByUtente(proprietarioBacheca);
 
                 request.setAttribute("proprietario", proprietarioBacheca);
                 request.setAttribute("posts", posts);
 
-                
-
-            } else if (gruppoBacheca != null){
+            } else if (gruppoBacheca != null) {
 
                 List<Post> posts = PostFactory.getInstance().getPostByGruppo(gruppoBacheca);
 
                 request.setAttribute("gruppo", gruppoBacheca);
                 request.setAttribute("posts", posts);
-                
 
-            }else{
+            } else {
 
                 response.sendError(404, "pagina non trovata");
 
             }
-            
-            
+
             request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-            
-        }
-        else{
+
+        } else {
             response.sendError(400, "accesso non consentito agli utenti non autenticati");
         }
     }

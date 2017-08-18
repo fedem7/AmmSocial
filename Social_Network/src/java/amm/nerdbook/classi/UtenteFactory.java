@@ -145,7 +145,45 @@ public class UtenteFactory {
 
         return userList;
     }
+    
+    public List getListaUtenti(String search) {
 
+        List<Utente> userList = new ArrayList<Utente>();
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "amm", "111");
+            
+            String query = 
+                      "select * from utente "
+                    + "where nome like ? or cognome like ? "
+                    + "order by cognome, nome";
+            
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            stmt.setString(1, "%" + search + "%");
+            stmt.setString(2, "%" + search + "%");
+            
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+                
+               Utente current = new Utente();
+               current = this.compilaUtente(res);
+
+                userList.add(current);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+        return userList;
+    }
+
+    
     public void deleteUser(Utente usr) {
         try {
             Connection conn = DriverManager.getConnection(connectionString, "amm", "111");

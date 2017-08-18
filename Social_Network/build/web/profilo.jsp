@@ -10,6 +10,8 @@
         <meta http-equiv = "content-type" content = "text/html; charset=utf-8" />
         <meta name="author" content="Federico Murru">
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/javascript.js"></script>
     </head>
 
     <body>
@@ -54,7 +56,6 @@
                                         <p><strong>password:</strong> ${newPassword}</p>
                                     </c:if>
                                 </div>
-
 
                             </div>
                         </c:when>

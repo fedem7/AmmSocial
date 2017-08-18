@@ -10,6 +10,8 @@
         <meta http-equiv = "content-type" content = "text/html; charset=utf-8" />
         <meta name="author" content="Federico Murru">
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+        <script src="js/jquery-3.2.1.min.js"></script>
+       <script src="js/javascript.js"></script>
     </head>
 
     <body>
@@ -34,7 +36,7 @@
                 </c:if>
                 <c:if test="${gruppo != null}">
                     <div id="stato">
-                        <p><strong>${gruppo.getNomeGruppo()}</strong></p>
+                        <p><strong>${gruppo.getNomeGruppo()} :</strong></p>
                     </div>
                 </c:if>
 
@@ -58,7 +60,7 @@
 
                                 <textarea  name="testo" id="testo"></textarea>
                                 <div class="nuovopost">
-                                    <input type="url" name="allegato" id="allegato" placeholder="inserisci allegato">
+                                    <input type="text" name="allegato" id="allegato" placeholder="inserisci allegato">
                                 </div>
 
                                 <input class="hidden" type="text" hidden name="userp" id="userp"

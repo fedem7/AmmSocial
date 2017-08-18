@@ -24,7 +24,7 @@
             <p>${testo2}</p>
         </c:if>
         <c:if test="${!empty allegato2}">
-            <p>${allegato2}</p>
+            <p><strong> url : </strong> ${allegato2}</p>
         </c:if>
 
         <input class="hidden" hidden type="text" name="testo" id="testo"

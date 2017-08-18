@@ -90,7 +90,7 @@ public enum Type {
     public void setPostType(Type postType) {
         this.postType = postType;
     }
-
+   
     /**
      * @return the urlAllegato
      */
@@ -131,6 +131,17 @@ public enum Type {
      */
     public void setAutore(Utente autore) {
         this.autore = autore;
-    }    
+    }
+
+    
+    public void riconoscimentoPost()
+    {
+        if((this.urlAllegato.indexOf("jpg")>-1)||
+        (this.urlAllegato.indexOf("jpeg")>-1)||
+                (this.urlAllegato.indexOf("png")>-1)){
+            this.setPostType(Type.IMAGE);}
+        else{this.setPostType(Type.LINK);}
+    }
+    
 }
 
