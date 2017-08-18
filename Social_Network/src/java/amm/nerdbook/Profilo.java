@@ -115,6 +115,10 @@ public class Profilo extends HttpServlet {
                             request.setAttribute("newImg", newImg);
                             loggato.setUrlFotoProfilo(newImg);
                             UtenteFactory.getInstance().updateImgProfilo(newImg, userID);
+                            if(loggato.getUrlFotoProfilo().equals("")){
+                                loggato.setUrlFotoProfilo("img/profilo.jpg");
+                                UtenteFactory.getInstance().updateImgProfilo("img/profilo.jpg", userID);
+                            }
                             request.setAttribute("newFrase", newFrase);
                             loggato.setFrasePresentazione(newFrase);
                             UtenteFactory.getInstance().updateFrasePresentazione(newFrase, userID);

@@ -91,7 +91,7 @@
 
                                                 <div class="textform">
                                                     <label for="img"><b>Immagine</b></label> 
-                                                    <input type="text" name="img" id="img" placeholder="inserisci immagine"                                 
+                                                    <input type="url" name="img" id="img" placeholder="inserisci immagine"                                 
                                                            value="${utenteLoggato.getUrlFotoProfilo()}">
                                                 </div>
 
